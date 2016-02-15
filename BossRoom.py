@@ -28,13 +28,11 @@ class BossRoom(Room):
       return True
     elif self.state == self.FIGHT_STATE and action == 'attack':
       if self.bossState == self.BOSS_RECHARGE:
-        
+
         if player.gotArtifact():
-            self.bossHp = self.bossHp - 2
+          self.bossHp = self.bossHp - 2
         else:
-            self.bossHp = self.bossHp - 1
-
-
+          self.bossHp = self.bossHp - 1
 
         self.flipBossState()
         if self.bossHp == 0:
@@ -54,7 +52,7 @@ class BossRoom(Room):
     self.initialText = text
     self.artifact = artifact
     self.setState(self.INITIAL_STATE)
-    self.bossHp = 10
+    self.bossHp = 20
 
   def setState(self, state):
     if state == self.INITIAL_STATE:
