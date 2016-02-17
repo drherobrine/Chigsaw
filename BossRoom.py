@@ -35,7 +35,7 @@ class BossRoom(Room):
           self.bossHp = self.bossHp - 1
 
         self.flipBossState()
-        if self.bossHp == 0:
+        if self.bossHp <= 0:
           self.setState(self.WIN_STATE)
       else:
         self.deadly = True
@@ -44,8 +44,13 @@ class BossRoom(Room):
     elif self.state == self.FIGHT_STATE and action == 'dodge':
       self.flipBossState()
       return True
+    elif action == 'uuddlrlrba':
+      self.bossHp = 0
+      self.setState(self.WIN_STATE)
+      return True
     else:
       return False
+
 
   def __init__(self, name, text, deadly, artifact):
     self.name = name
