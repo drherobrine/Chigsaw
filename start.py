@@ -1,6 +1,8 @@
 # Support for using Python3 features in Python2(.7)
 from __future__ import absolute_import
+from __future__ import division
 from __future__ import print_function
+from __future__ import unicode_literals
 # Support for using Python3 range and input in Python2(.7)
 from six.moves import range
 from six.moves import input
