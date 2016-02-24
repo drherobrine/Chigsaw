@@ -1,13 +1,20 @@
+# Support for using Python3 features in Python2(.7)
+from __future__ import absolute_import
+from __future__ import print_function
+# Support for using Python3 range and input in Python2(.7)
+from six.moves import range
+from six.moves import input
+# Import game dependencies
 from Room import *
 from BossRoom import *
 from Player import *
 from Artifact import *
 
-name = raw_input('Whats your name? ')
+name = input('Whats your name? ')
 player = Player()
 
-print 'Welcome to Chigsaw, ' + name + '.'
-print 'Sorry for no graphics, its my first game after all=)'
+print('Welcome to Chigsaw, ' + name + '.')
+print('Sorry for no graphics, its my first game after all=)')
 
 
 rooms = [[0 for x in range(3)] for x in range(3)]
@@ -30,10 +37,10 @@ mandatoryActions = ['quit']
 actionList = ['forward', 'back', 'left', 'right']
 
 while not dead:
-  print ' = = = = = = = = = = = = = = = = = = = = = = = = = = = = = '
-  print 'Current room: ' + rooms[x][y].getName()
-  print rooms[x][y].getText()
-  print ''
+  print(' = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ')
+  print('Current room: ' + rooms[x][y].getName())
+  print(rooms[x][y].getText())
+  print('')
   if rooms[x][y].hasArtifact():
       artifact = rooms[x][y].getArtifact()
       player.takeArtifact(artifact)
@@ -50,7 +57,7 @@ while not dead:
   if dead:
     continue
 
-  action = raw_input('Type your action (%s): ' % ', '.join(tmpActionList))
+  action = input('Type your action (%s): ' % ', '.join(tmpActionList))
 
   actionProcessed = rooms[x][y].act(action, player)
 
@@ -80,6 +87,6 @@ while not dead:
     continue
 
   if not actionProcessed:
-   print 'Sorry, I did not get you.'
+   print('Sorry, I did not get you.')
 
-print 'Game over!'
+print('Game over!')
